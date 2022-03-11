@@ -1,0 +1,70 @@
+.register-batch-manager {
+  width: 100vw;
+  height: calc(100vh - 80px);
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.5)
+  ),
+  url("https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.register-batch-manager h1 {
+  text-transform: capitalize;
+}
+.register-batch-manager > div:first-child {
+  margin: 3rem;
+}
+.register-batch-manager > div:nth-child(2) {
+  flex: 1;
+  height: 80%;
+  margin: 2rem;
+  border-radius: 10rem 2rem 2rem 10rem/100% 2rem 2rem 100%;
+  display: grid;
+  place-items: center;
+  background-color: hsl(216, 66%, 74%);
+}
+.register-batch-manager > div:nth-child(2) > form {
+  width: 100%;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+}
+.register-batch-manager > div:nth-child(2) > form > div {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+.register-batch-manager > div:nth-child(2) > form > div > div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.register-batch-manager input,
+.register-batch-manager select,
+.register-batch-manager input[type='file'] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.register-batch-manager button {
+  width: 15rem;
+  font-size: 24px;
+  padding: 0.5rem 1rem;
+  background-color: lightgreen;
+  border: none;
+  transition: filter 300ms ease-in-out;
+}
+.register-batch-manager button:hover {
+  filter: brightness(1.1);
+}
+.register-batch-manager input::placeholder {
+  color: gray;
+}

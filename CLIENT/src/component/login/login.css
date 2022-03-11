@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300&display=swap");
+
+.login-main {
+  background-repeat: repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  min-height: 100vh;
+}
+
+.usernamelog {
+  border: none;
+  background: fixed;
+  background-color: transparent !important;
+  padding-top: 25px;
+  font-size: 18px;
+  border-bottom: 2px solid #09203f;
+  color: rgb(2, 0, 0);
+  font-family: "IBM Plex Sans Thai", sans-serif;
+}
+
+.passwordlog {
+  padding-top: 25px;
+  border: none;
+  background-color: transparent !important;
+  font-size: 18px;
+  border-bottom: 2px solid #09203f;
+  color: rgb(0, 0, 0);
+  font-family: "IBM Plex Sans Thai", sans-serif;
+}
+
+::-webkit-input-placeholder {
+  /* Edge */
+  color: black;
+  font-size: 18px;
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: black;
+  font-size: 18px;
+}
+::placeholder {
+  color: black;
+  font-size: 18px;
+}
+
+input:focus {
+  color: black;
+  font-size: 18px;
+}
+
+input {
+  width: 400px;
+}
+
+.buttonlog {
+  border: 2px solid #09203f;
+  border-radius: 10px;
+  width: 65px;
+  margin-top: 20px;
+  cursor: pointer;
+  background-color: transparent;
+  color: black;
+  font-size: 18px;
+  text-align: center;
+  height: 50px;
+}
+
+.buttonlog:hover {
+  background-color: #09203f;
+  color: white;
+}
+
+.errormessage {
+  color: rgb(173, 0, 0);
+  font-size: medium;
+  font-weight: bolder;
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  position: absolute;
+  z-index: 1;
+  width: 250px;
+}
+
+.loginlabel {
+  font-size: 18px;
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  color: #09203f;
+  font-weight: bolder;
+}
+.logother {
+  margin-right: 100px;
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  color: gray;
+}
+.registerbuttoni {
+  color: gray;
+}
+.login-mai {
+  border: 2px dashed #09203f;
+  padding: 50px;
+  padding-top: 18px;
+  padding-bottom: 65px;
+  border-radius: 10px;
+  background-color: white;
+}

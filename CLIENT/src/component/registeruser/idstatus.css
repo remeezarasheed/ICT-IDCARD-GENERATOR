@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Arbutus+Slab&family=Dosis:wght@200&display=swap");
+
+td {
+  margin: 0px !important;
+}
+.approved {
+  font-family: "Share Tech", sans-serif !important;
+  text-align: center;
+  padding-left: 23px;
+}
+
+.idststat {
+  font-family: "Share Tech", sans-serif !important;
+  text-align: center;
+}
+.small {
+  font-size: smaller !important;
+  font-style: italic !important;
+  color: gray !important;
+  font-family: "Share Tech", sans-serif !important;
+}
+.round {
+  border-radius: 50px !important;
+  border: 2px solid #ee52a5 !important;
+}
+tbody {
+  font-family: "Share Tech", sans-serif !important;
+  font-weight: 700 !important;
+  -webkit-box-shadow: 0px 7px 10px -10px rgba(0, 0, 0, 0.67);
+  -moz-box-shadow: 0px 7px 10px -10px rgba(0, 0, 0, 0.67);
+  box-shadow: 0px 7px 10px -10px rgba(0, 0, 0, 0.67) !important;
+}
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech&display=swap");
+
+.middleme {
+  font-family: "Share Tech", sans-serif !important;
+  left: 35%;
+}
+
+.table1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Share Tech", sans-serif !important;
+
+  text-align: left;
+  min-height: 50vh;
+  overflow-x: auto;
+  margin: 0;
+  padding: 0;
+}
+
+tbody {
+  width: fit-content;
+  padding: 18px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: white;
+  border-top: 5px solid transparent;
+  border-image: linear-gradient(
+    to bottom right,
+    #b827fc 0%,
+    #2c90fc 25%,
+    #b8fd33 50%,
+    #fec837 75%,
+    #fd1892 100%
+  );
+
+  border-image-slice: 1;
+}

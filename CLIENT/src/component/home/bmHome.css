@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Arbutus+Slab&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+.column {
+  float: left;
+  padding: 10px;
+  height: 650px;
+}
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech&display=swap");
+
+.left {
+  height: 110vh;
+  width: 35%;
+  padding: 20px;
+  border-top: 5px solid transparent;
+  border-image: linear-gradient(
+    to bottom right,
+    #b827fc 0%,
+    #2c90fc 25%,
+    #b8fd33 50%,
+    #fec837 75%,
+    #fd1892 100%
+  );
+  border-image-slice: 1;
+  background: #2b5876; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #4e4376,
+    #2b5876
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #4e4376,
+    #2b5876
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  box-shadow: -14px -1px 12px -3px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: -14px -1px 12px -3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -14px -1px 12px -3px rgba(0, 0, 0, 0.75);
+  text-align: center;
+}
+.userdetil {
+  font-family: "Share Tech", sans-serif;
+  font-size: 20px;
+  padding: 8px;
+  font-weight: 400;
+  color: gainsboro;
+  height: 25px;
+}
+.h3detil {
+  font-family: "Share Tech", sans-serif;
+  color: aliceblue;
+  font-size: 29px;
+  padding: 8px;
+  font-weight: normal;
+}
+
+.right {
+  width: 65%;
+  height: 110vh;
+
+  background: #2b5876; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to left,
+    #4e4376,
+    #2b5876
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    #4e4376,
+    #2b5876
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+@media screen and (max-width: 720px) {
+  .column {
+    width: 100%;
+  }
+}

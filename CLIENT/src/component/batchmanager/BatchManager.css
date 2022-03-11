@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Arbutus+Slab&display=swap");
+.batchManager {
+  position: relative;
+  padding: 1rem;
+}
+.batchManager{
+  width: 100vw;
+  height: calc(100vh - 50px);
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.5)
+  ),
+  url("https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+}
+.batchManager table {
+  width: 100%;
+}
+.batchManager table thead {
+  width: 100%;
+  background-color: lightblue;
+}
+.batchManager table tr {
+  cursor: pointer;
+}
+.batchManager table tr:hover td{
+  background-color:rgb(132, 197, 219); 
+}
+
+#modal-root{
+  position: absolute;
+  top: 50;
+  width: 250px;
+  height: 300px;
+}
+.row{
+  cursor: pointer;
+}
+.popup-image{
+  border: solid 1px green;
+  height: 30px;
+  width: 30px;
+}
+.batchmanagerdetil {
+  font-family: "Share Tech", sans-serif;
+  font-size: 20px;
+  padding: 8px;
+  font-weight: 400;
+  color: black;
+  height: 25px;
+}
+.h3batchmanagerdetil {
+  font-family: "Share Tech", sans-serif;
+  color: violet;
+  font-size: 29px;
+  padding: 8px;
+  font-weight: normal;
+}
