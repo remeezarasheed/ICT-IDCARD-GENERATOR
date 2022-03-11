@@ -97,7 +97,14 @@ router.get("/", (req, res) => {
 
 //details of BM end here
 
-
+router.get("/:id/bmuser", (req, res) => {
+  const role = req.user.role;
+  const id = req.params.id;
+  Users.find({_id:id})
+ 
+  .then((r) => res.json(r))
+}
+);
 // adding new BM and mail sending
 router.post("/", upload.single("image"), async (req, res) => {
     const role = req.user.role;

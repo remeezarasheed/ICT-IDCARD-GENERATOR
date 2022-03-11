@@ -1,8 +1,8 @@
-import { useEffect, useState ,React} from "react";
+import { useEffect, useState, React } from "react";
 import "./BatchManager.css";
 
 import "reactjs-popup/dist/index.css";
-import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
+import { Modal, ModalHeader, ModalBody, ModalFooter, Button, } from "reactstrap";
 import Header from "../header/Header.jsx";
 import "../header/Header.css";
 
@@ -13,29 +13,29 @@ export default function BatchManager() {
   const [showPopup, setShowPopup] = useState(false);
   const [selectedUser, setSelectedUser] = useState([]);
   const [Error, setError] = useState();
+  const [EditMode, setEditMode] = useState(false);
 
   async function handleDelete(id) {
     // eslint-disable-next-line no-restricted-globals
-    if(confirm("Do you want to delete permanently?")=== true){
-
-    
-    fetch(`http://localhost:8000/batchmanager/${id}`, {
-      method: "DELETE",
-      headers: {
-        "x-access-token": localStorage.getItem("token"),
-      },
-    })
-      .then((r) => r.json())
-      .then((data) => {
-        console.log(data);
+    if (confirm("Do you want to delete permanently?") === true) {
+      fetch(`http://localhost:8000/batchmanager/${id}`, {
+        method: "DELETE",
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+        },
       })
-      .then((data) => {
-        setRefetch((v) => v + 1);
-        setShowPopup((previous) => !previous);
-      })
-      .catch((e) => console.log(e.message));
-  }}
-  async function handleUpdate( id ) {
+        .then((r) => r.json())
+        .then((data) => {
+          console.log(data);
+        })
+        .then((data) => {
+          setRefetch((v) => v + 1);
+          setShowPopup((previous) => !previous);
+        })
+        .catch((e) => console.log(e.message));
+    }
+  }
+  async function handleUpdate(id) {
     fetch(`http://localhost:8000/batchmanager/${id}`, {
       method: "PUT",
       headers: {
@@ -93,31 +93,53 @@ export default function BatchManager() {
                   />
                 </div>
                 <h3 className="h3batchmanagerdetil" style={{ height: "0.5px" }}>
-                  {selectedUser.name}
+                {!EditMode && selectedUser.name}
+                {EditMode && <input className="edit-inputfield" type="text" />}
                 </h3>
                 <br />
                 <p className="batchmanagerdetil">Batch Manager</p>
                 <p className="batchmanagerdetil">
-                  Designation: {selectedUser.designation}
+                  Designation: {!EditMode && selectedUser.designation}
+                  {EditMode && <input className="edit-inputfield" type="text" />}
                 </p>
                 <p className="batchmanagerdetil">
-                  Gender:{selectedUser.gender}
+                  Gender:{!EditMode && selectedUser.gender}
+                  {EditMode && <input className="edit-inputfield" type="text" />}
                 </p>
                 <p className="batchmanagerdetil">Email :{selectedUser.email}</p>
-                <p className="batchmanagerdetil">Phone :{selectedUser.phone}</p>
-                <p className="batchmanagerdetil">Batch :{selectedUser.batch}</p>
                 <p className="batchmanagerdetil">
-                  Course :{selectedUser.course}
+                  Phone : {!EditMode && selectedUser.phone}
+                  {EditMode && <input className="edit-inputfield" type="text" />}
+                </p>
+                <p className="batchmanagerdetil">
+                  Batch :{!EditMode && selectedUser.batch}
+                  {EditMode && <input className="edit-inputfield" type="text" />}
+                  </p>
+                <p className="batchmanagerdetil">
+                  Course :{!EditMode && selectedUser.course}
+                  {EditMode && <input className="edit-inputfield" type="text" />}
                 </p>
               </div>
             ) : null}
           </ModalBody>
           <ModalFooter>
-            <Button onClick={() => handleUpdate(selectedUser.id)}>Edit</Button>
+            {EditMode && (
+              <Button onClick={() => setEditMode((o) => !o)}>Update</Button>
+            )}
+            <Button onClick={() => setEditMode((o) => !o)}>
+              {!EditMode ? <>Edit</> : <>Cancel Edit</>}
+            </Button>
             <Button onClick={() => handleDelete(selectedUser.id)}>
               Delete
             </Button>
-            <Button onClick={() => setShowPopup((o) => !o)}>Cancel</Button>
+            <Button
+              onClick={() => {
+                setShowPopup((o) => !o);
+                setEditMode(false);
+              }}
+            >
+              Cancel
+            </Button>
           </ModalFooter>
         </Modal>
         <table>
@@ -133,7 +155,8 @@ export default function BatchManager() {
           <tbody>
             {Data &&
               Data.map((v, i) => (
-                <tr i={i}
+                <tr
+                  i={i}
                   onClick={() => {
                     console.log("this");
                     setShowPopup(true);

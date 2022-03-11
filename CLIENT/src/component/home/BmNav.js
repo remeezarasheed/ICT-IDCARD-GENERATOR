@@ -35,15 +35,15 @@ function BmNav(props) {
     }
 
     return (
-        <div className="navbar">
+        <div className='nav1'>
             {
                 
                 <>
                  <FaSignOutAlt  style={{fontSize:"25px", color:"gray", float:"right", cursor:"pointer"}} alt="Sign Out" onClick={logout}/>
                  <br/>
                  <Button variant="contained"><Link to={`/bmhome`} style={{textDecoration:"none", color:"white" }}>Home</Link></Button> 
-                 <Button variant="contained"><Link to={`/bmhome`}  style={{textDecoration:"none", color:"white" }}>Pending</Link></Button>  
-                  <Button variant="contained"><Link to={`/bmhome`}  style={{textDecoration:"none", color:"white" }}>Rejected </Link></Button> 
+                 <Button variant="contained"><Link to={`/bmhome`}  style={{textDecoration:"none", color:"white" }}>Pending List</Link></Button>  
+                  <Button variant="contained"><Link to={`/bmhome`}  style={{textDecoration:"none", color:"white" }}>History </Link></Button> 
                     </>
 
             

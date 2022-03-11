@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300&display=swap");
 
 .login-main {
-  background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
+  background-image: linear-gradient(to top, #d16323 0%, #e9d62d 100%);
   display: flex;
   flex-direction: column;
   justify-content: center;

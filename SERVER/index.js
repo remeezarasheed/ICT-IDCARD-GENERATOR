@@ -375,6 +375,9 @@ app.get('/api/:id/getroleandstatus', verifyJWT, (req,res)=>{
 //PDF MAKE STARTS HERE
 
 
+//PDF MAKE STARTS HERE
+
+
 app.get('/api/:id/generate-pdf', verifyJWT, (req, res) => {
     const id =  req.params.id;
     const role= req.user.role;
@@ -447,17 +450,19 @@ app.get('/api/:id/generate-pdf', verifyJWT, (req, res) => {
 
             },
             {
-                text: [ `\n`,`\n`,`\n`,`\n`,`\n`,`\n`,`\n`,`\n`,`\n`,`\n`, `${obj.fullname} \n`],
-                fontSize: 13,
+                text: [ `\n`,`\n`,`\n`,`\n`,`\n`,`\n`,`\n`,`\n`,`\n`,`\n`,`\n`, `${obj.fullname} \n`],
+                fontSize: 12,
                 alignment: "center",
-                color: "#0281a1"
+                color: "#0281a1",
+                margin: [0, 0],
+
             },
 
             {
-                text: [ `\n`,
+                text: [ 
                 `${obj.designation} \n`,
                 `Gender: ${obj.gender} \n`,
-                `Course: ${obj.course} \n`,
+                `${obj.course} \n`,
 
                 ],
                 alignment: "center",
@@ -465,16 +470,14 @@ app.get('/api/:id/generate-pdf', verifyJWT, (req, res) => {
             },
             {
             text:[
- `\n`
-           ]
+           ],
+           pageBreak: "after"
             },
             {
-                canvas: [
-                    { type: 'line', 
-                    x1: -60, y1: -40, x2: 595-2*40, y2: -40, 
-                    lineWidth: 38, 
-                    lineColor: "#0281a1",
-                   }]
+                image: `./images/smallhead.png`,
+                absolutePosition: { x: 0, y: -30, z:-1 },
+                height: 69,
+                width:230
             },
             {
                 text: [ `Phone Number: +91 ${obj.phone} \n`,
@@ -554,8 +557,6 @@ app.get('/api/:id/generate-pdf', verifyJWT, (req, res) => {
         res.json(message= "Not Authorized")
     }}) 
 });
-
-
 
 //PDF MAKE ENDS HERE
 
@@ -744,11 +745,11 @@ app.post("/api/forgetpwd",async(req, res) => {
     const emailfind = await Users.findOne({email:req.body.email})
    
         if (!emailfind) {
-        res.json({message: "Invalid Email"})
+        res.json({message: "Invalid Email/Name"})
         }
         else if(req.body.name !== emailfind.name)
         {
-        res.json({message: "Invalid Name"})
+        res.json({message: "Invalid Email/Name"})
         }  
         else if(req.body.name == emailfind.name)
         {  
@@ -807,7 +808,7 @@ app.post("/api/forgetpwd",async(req, res) => {
            
            
            
-       res.json(message = "Success")
+       res.json({message : "success"})
            })}       
 })
 

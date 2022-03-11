@@ -27,18 +27,19 @@
   background: #2b5876; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
-    #4e4376,
+    #e29b18,
     #2b5876
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to right,
-    #4e4376,
-    #2b5876
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    #628eee,
+    #15aed4
+  )!important;/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   box-shadow: -14px -1px 12px -3px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: -14px -1px 12px -3px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: -14px -1px 12px -3px rgba(0, 0, 0, 0.75);
   text-align: center;
+  
 }
 .userdetil {
   font-family: "Share Tech", sans-serif;

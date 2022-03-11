@@ -1,11 +1,13 @@
 import { useLayoutEffect, useState  } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import ValidationError from '../login/ValidationError.js';
 
 import "./forgotPwd.css"
 
 function ForgotPwd(props) {
 
-    const [errorMessage, setErrorMessage] = useState()
+    const [errorMessage, setErrorMessage] = useState("")
+
     const navigate = useNavigate()
 
     async function handleLogin(e) 
@@ -33,7 +35,7 @@ function ForgotPwd(props) {
         {
             setErrorMessage(err)
         }
-
+        console.log(errorMessage);
     }
 
     return (
@@ -48,12 +50,14 @@ function ForgotPwd(props) {
                 <br />
                 <input placeholder="Name" className="usernamelog" type="text" name="name" id="name" />
                 <br />
-                <input className="buttonlog" type="submit" value="Reset"/>                          
-                </form>
+              
+                <input className="buttonlog" type="submit" value="Reset"/>     
+                <div  className='errorMessage'>{errorMessage === "success" ?  <h4> New Credential is Successfully sent to your Email  </h4> : errorMessage ===  "Invalid Email/Name"? <h3>Authentication Failed</h3>:<div/>}</div>                      
+                </form><br/><br/>
             
-        <br/>
-        <br/>   
-        <div>{errorMessage === "Success" ? <h3>New Password is sent to your mail id</h3>: <h3>Authentication Failed</h3>}</div>     
+        
+          
+        
         
         </div>
         </div>

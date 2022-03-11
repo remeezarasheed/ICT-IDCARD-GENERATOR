@@ -35,7 +35,7 @@ function Navbuttons(props) {
 
 
     return (
- <div className="navbar">
+ <div className='nav1'>
             {
                 userDetails.role==="user"? 
                 <>
