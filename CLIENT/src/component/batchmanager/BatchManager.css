@@ -3,14 +3,14 @@
   position: relative;
   padding: 1rem;
 }
-.batchManager{
+.batchManager {
   width: 100vw;
   height: calc(100vh - 50px);
   background: linear-gradient(
-    rgba(255, 255, 255, 0.5),
-    rgba(255, 255, 255, 0.5)
-  ),
-  url("https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    ),
+    url("https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
 }
 .batchManager table {
   width: 100%;
@@ -22,20 +22,20 @@
 .batchManager table tr {
   cursor: pointer;
 }
-.batchManager table tr:hover td{
-  background-color:rgb(132, 197, 219); 
+.batchManager table tr:hover td {
+  background-color: rgb(132, 197, 219);
 }
 
-#modal-root{
+#modal-root {
   position: absolute;
   top: 50;
   width: 250px;
   height: 300px;
 }
-.row{
+.row {
   cursor: pointer;
 }
-.popup-image{
+.popup-image {
   border: solid 1px green;
   height: 30px;
   width: 30px;
@@ -46,7 +46,7 @@
   padding: 8px;
   font-weight: 400;
   color: black;
-  height: 25px;
+  height: 37px;
 }
 .h3batchmanagerdetil {
   font-family: "Share Tech", sans-serif;
@@ -55,8 +55,11 @@
   padding: 8px;
   font-weight: normal;
 }
-.edit-inputfield{
-  background-color: aqua;
+.edit-inputfield {
+  font-size: 1rem;
+  /* background-color: aqua; */
+  /* height: 1.5rem; */
+  width: 50%;
   /* margin-left: 80px;
   margin-top: -180px; */
 }

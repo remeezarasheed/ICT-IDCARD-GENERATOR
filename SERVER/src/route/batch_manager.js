@@ -6,7 +6,6 @@ const nodemailer = require("nodemailer");
 let path = require("path");
 const bcrypt = require("bcrypt");
 
-
 const router = express.Router();
 
 const storage = multer.diskStorage({
@@ -74,25 +73,25 @@ let upload = multer({ storage, fileFilter });
 // details of batchmanagers
 
 router.get("/", (req, res) => {
-    const role = req.user.role;
-    if (role === "admin") {
-  Users.find(
-    { role: "bm" },
-    {
-      email: 1,
-      role: 1,
-      name: 1,
-      course: 1,
-      designation: 1,
-      phone: 1,
-      gender: 1,
-      batch: 1,
-      image: 1,
-    }
-  )
-    .then((r) => res.status(200).json(r))
-    .catch((e) => res.status(500).json(e.message));
-}
+  const role = req.user.role;
+  if (role === "admin") {
+    Users.find(
+      { role: "bm" },
+      {
+        email: 1,
+        role: 1,
+        name: 1,
+        course: 1,
+        designation: 1,
+        phone: 1,
+        gender: 1,
+        batch: 1,
+        image: 1,
+      }
+    )
+      .then((r) => res.status(200).json(r))
+      .catch((e) => res.status(500).json(e.message));
+  }
 });
 
 //details of BM end here
@@ -100,41 +99,39 @@ router.get("/", (req, res) => {
 router.get("/:id/bmuser", (req, res) => {
   const role = req.user.role;
   const id = req.params.id;
-  Users.find({_id:id})
- 
-  .then((r) => res.json(r))
-}
-);
+  Users.find({ _id: id })
+  .then((r) => res.json(r));
+});
 // adding new BM and mail sending
 router.post("/", upload.single("image"), async (req, res) => {
-    const role = req.user.role;
-    if (role === "admin") {
-  const user = req.body;
-  //check user name or pswd is taken before
-  const takenEmail = await Users.findOne({ email: user.email.toLowerCase() });
-  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-  if (takenEmail) {
-    res.json({ message: "Email has already been taken" });
-  } else if (!regex.test(user.email)) {
-    res.json({ message: "Email is invalid" });
-  } else {
-    user.password = await bcrypt.hash(`ICTAK123@${req.body.phone}`, 10);
-    const dbUser = new Users({
-      email: user.email.toLowerCase(),
-      phone: user.phone,
-      name: user.name,
-      gender: user.gender,
-      password: user.password,
-      batch: user.batch,
-      course: user.course,
-      image: req.file.filename,
-      designation: user.designation,
-      role: "bm",
-    });
+  const role = req.user.role;
+  if (role === "admin") {
+    const user = req.body;
+    //check user name or pswd is taken before
+    const takenEmail = await Users.findOne({ email: user.email.toLowerCase() });
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    if (takenEmail) {
+      res.json({ message: "Email has already been taken" });
+    } else if (!regex.test(user.email)) {
+      res.json({ message: "Email is invalid" });
+    } else {
+      user.password = await bcrypt.hash(`ICTAK123@${req.body.phone}`, 10);
+      const dbUser = new Users({
+        email: user.email.toLowerCase(),
+        phone: user.phone,
+        name: user.name,
+        gender: user.gender,
+        password: user.password,
+        batch: user.batch,
+        course: user.course,
+        image: req.file.filename,
+        designation: user.designation,
+        role: "bm",
+      });
 
-    const recipient = user.email;
-    const mailSubject = "ICTAK ID CARD Generator-Login Credentials-reg.";
-    const mailBody = `Dear ${req.body.name},
+      const recipient = user.email;
+      const mailSubject = "ICTAK ID CARD Generator-Login Credentials-reg.";
+      const mailBody = `Dear ${req.body.name},
     
      Welcome to ID Card Generator!
 
@@ -156,31 +153,31 @@ This is a system generated mail. Please do not reply to this e-mail address. If 
     ICTAK
     `;
 
-    // Mail options
-    let mailOptions = {
-      from: process.env.SENDER_EMAIL,
-      to: recipient,
-      subject: mailSubject,
-      text: mailBody,
-    };
-    try {
-      dbUser.save();
-      let emailTransporter = await createTransporter();
-      emailTransporter.sendMail(mailOptions, function (error, info) {
-        if (error) {
-          // failed block
-          console.log(error);
-        } else {
-          // Success block
-          console.log("Email sent: " + info.response);
-        }
-      });
-    } catch (error) {
-      return console.log(error);
+      // Mail options
+      let mailOptions = {
+        from: process.env.SENDER_EMAIL,
+        to: recipient,
+        subject: mailSubject,
+        text: mailBody,
+      };
+      try {
+        dbUser.save();
+        let emailTransporter = await createTransporter();
+        emailTransporter.sendMail(mailOptions, function (error, info) {
+          if (error) {
+            // failed block
+            console.log(error);
+          } else {
+            // Success block
+            console.log("Email sent: " + info.response);
+          }
+        });
+      } catch (error) {
+        return console.log(error);
+      }
+      res.json({ message: "Success" });
     }
-    res.json({ message: "Success" });
-  }
-} else {
+  } else {
     res.json((message = "Not an Admin"));
   }
 });
@@ -191,14 +188,14 @@ This is a system generated mail. Please do not reply to this e-mail address. If 
 router.delete("/:id", (req, res) => {
   const role = req.user.role;
   if (role === "admin") {
-  const { id } = req.params;
-  const filter = { _id: id };
-  Users.deleteOne(filter, { new: true })
-    .then((batch) => {
-      res.json(batch);
-    })
-    .catch((e) => console.log(e.message));
-} else {
+    const { id } = req.params;
+    const filter = { _id: id };
+    Users.deleteOne(filter, { new: true })
+      .then((batch) => {
+        res.json(batch);
+      })
+      .catch((e) => console.log(e.message));
+  } else {
     res.json((message = "Not an Admin"));
   }
 });
@@ -208,38 +205,39 @@ router.delete("/:id", (req, res) => {
 //updating details of BM
 
 router.put("/:id", upload.single("image"), (req, res) => {
-    //destructuring data from request and body
+  //destructuring data from request and body
+  console.log("12345");
   const role = req.user.role;
   if (role === "admin") {
-  const id = req.params.id;
-  const filter = { _id: id };
-  const {
-    email,
-    name,
-    designation,
-    gender,
-    password,
-    role,
-    batch,
-    course,
-    phone,
-  } = req.body;
-  const update = {
-    email,
-    name,
-    designation,
-    gender,
-    password,
-    role,
-    batch,
-    course,
-    phone,
-  };
-  console.log(update);
-  Users.updateOne(filter, update, { new: true }).then((batch) => {
-    res.json(batch);
-  });
-} else {
+    const id = req.params.id;
+    const filter = { _id: id };
+    const {
+      email,
+      name,
+      designation,
+      gender,
+      password,
+      role,
+      batch,
+      course,
+      phone,
+    } = req.body;
+    const update = {
+      email,
+      name,
+      designation,
+      gender,
+      password,
+      role,
+      batch,
+      course,
+      phone,
+    };
+    console.log(update);
+    Users.updateOne(filter, update, { new: true }).then((batch) => {
+      res.json(batch);
+    });
+  } else {
     res.json((message = "Not an Admin"));
   }
 });
