@@ -48,7 +48,7 @@ app.use(function (req, res, next) {
 //middle router 
 app.use("/batchmanager",  verifyJWT, batchRouter);
 
-app.use('/images', express.static('images'));
+app.use('/images', express.static(path.join(__dirname, 'images')))
 
 //multer & uuid
 
@@ -815,7 +815,63 @@ app.post("/api/forgetpwd",async(req, res) => {
 
 //Forget Password api ends here
 
+//bm
 
+//bm list shows
+app.get("/:id/showmyapprove",verifyJWT, async(req,res)=>{
+    const id = req.params.id;
+    const emailfinder = await Users.findOne({_id:id})
+   if(emailfinder.role==="bm"){
+    Users.find({approvedby: emailfinder.email}).then((list)=>{
+        res.json(list)
+    })}
+})
+//bmlist ends
+
+
+//bm action list shows
+app.get("/showmypendingilst",verifyJWT, async(req,res)=>{
+    const id = req.user.id;
+    const pendlist = await Users.findOne({_id:id})
+    if (pendlist.role==="bm") {
+    Users.find({course: pendlist.course, role:"user", approvedstatus:"pending"}).then((list)=>{
+        res.json(list)
+    })} 
+})
+//bmlist pending list ends
+
+//bm pending to approved&by shows
+app.put("/:id/approved",verifyJWT, async(req,res)=>{
+    const id = req.params.id;
+    const apprby = req.user.email;
+    const filter = {_id: id };
+    const update = {approvedstatus:"approved", approvedby: apprby}
+    const role = req.user.role;
+    if(role==="bm"){
+    Users.findOneAndUpdate(filter, update,{new: true}).then((list)=>{
+        res.json(list)
+    })}
+})
+//bmlist pending list ends
+
+//bm pending to approved&by shows
+app.put("/:id/rejected",verifyJWT, async(req,res)=>{
+    const id = req.params.id;
+    const apprby = req.user.email;
+    const filter = {_id:  req.params.id };
+    const update = {approvedstatus:"rejected", approvedby: apprby}
+    const role = req.user.role;
+    if(role==="bm"){
+    Users.findOneAndUpdate(filter, update,{new: true}).then((list)=>{
+        res.json(list)
+    })}
+})
+//bmlist pending list ends
+
+
+
+
+//bm
 
 
 

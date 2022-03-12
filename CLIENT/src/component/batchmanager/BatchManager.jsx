@@ -6,6 +6,7 @@ import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
 import Header from "../header/Header.jsx";
 import "../header/Header.css";
 
+
 export default function BatchManager() {
   const [isLoading, setIsLoading] = useState(true);
   const [Refetch, setRefetch] = useState(0);
