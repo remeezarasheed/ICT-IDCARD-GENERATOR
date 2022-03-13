@@ -15,7 +15,7 @@ function Applyidcard(props) {
     
 
     async function fetchData() {
-        const response = await fetch(`http://localhost:8000/api/${id}/getroleandstatus`,{
+        const response = await fetch(`/api/${id}/getroleandstatus`,{
             headers:{
                 "x-access-token": localStorage.getItem("token")
                 }
@@ -35,7 +35,7 @@ function Applyidcard(props) {
             const formData = new FormData(e.target);
 
         try {
-            const res = await fetch(`http://localhost:8000/api/${id}/apply/`, {
+            const res = await fetch(`/api/${id}/apply/`, {
                 method: "PUT",
                 body: formData,
                 headers: {
@@ -52,7 +52,7 @@ function Applyidcard(props) {
     useLayoutEffect(() => {
         <Coursedropdown />
         fetchData()
-        fetch("http://localhost:8000/isUserAuth", {
+        fetch("/isUserAuth", {
             headers: {
                 "x-access-token": localStorage.getItem("token"),
             }

@@ -12,7 +12,7 @@ export default function PendingList() {
       }, [Refetch]);
 
     async function fetchPendingList() {
-        const response = await fetch(`http://localhost:8000/showmypendingilst`, {
+        const response = await fetch(`/showmypendingilst`, {
           headers: {
             "x-access-token": localStorage.getItem("token"),
           },
@@ -22,7 +22,7 @@ export default function PendingList() {
       }
     
       async function approveUser(_id){
-        const response = await fetch(`http://localhost:8000/${_id}/approved`, {
+        const response = await fetch(`/${_id}/approved`, {
             method: "PUT",
             headers: {
                 "Content-type": "application/json",
@@ -35,7 +35,7 @@ export default function PendingList() {
       }
     
       async function rejectedUser(_id){
-        const response = await fetch(`http://localhost:8000/${_id}/rejected`, {
+        const response = await fetch(`/${_id}/rejected`, {
             method: "PUT",
             headers: {
                 "Content-type": "application/json",
@@ -78,7 +78,7 @@ export default function PendingList() {
                   <td>{i + 1}</td>
                   <td>{v.fullname}</td>
                   <td> <img
-                src={`http://localhost:8000/images/${v.image}`}
+                src={`/images/${v.image}`}
                 alt="profilepic"
                 style={{
                   height: "50px",

@@ -15,7 +15,7 @@ export default function NewBatchManager() {
     e.preventDefault();
     const formData = new FormData(e.target);
     try {
-      const res = await fetch("http://localhost:8000/batchmanager/", {
+      const res = await fetch("/batchmanager/", {
         method: "POST",
         body: formData,
         headers: {
@@ -34,7 +34,7 @@ export default function NewBatchManager() {
   }
 
   useEffect(() => {
-    fetch('http://localhost:8000/isUserAuth', {
+    fetch('/isUserAuth', {
       headers: {
         'x-access-token': localStorage.getItem('token'),
       },

@@ -9,7 +9,7 @@ function Coursedropdown(props) {
   }, []);
 
   async function fetchAPI() {
-    const response = await fetch(`http://localhost:8000/api/batchcourse`);
+    const response = await fetch(`/api/batchcourse`);
     const body = await response.json();
     setBatchCourse(body);
   }

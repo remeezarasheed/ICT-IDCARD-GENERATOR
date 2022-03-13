@@ -16,6 +16,7 @@ const batchRouter = require("./src/route/batch_manager");
 
 
 const app = express(); 
+app.use( express.static(path.join(__dirname,'/src/build')))
 const cors = require('cors');
 const { get } = require('express/lib/response');
 const { ClientRequest } = require('http');
@@ -867,41 +868,12 @@ app.put("/:id/rejected",verifyJWT, async(req,res)=>{
     })}
 })
 //bmlist pending list ends
-
-
-
-
 //bm
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 const port = process.env.PORT || 8000; 
 
-
+app.get("*",(req,res)=>{
+    res.sendFile(path.join(__dirname+'/src/build/index.html'));
+})
 // This displays message that the server running and listening to specified port
 app.listen(port, () => console.log(`Listening on port ${port}`));

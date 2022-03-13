@@ -14,7 +14,7 @@ function Navbuttons(props) {
         },[]);
 
     async function fetchData() {
-        const response = await fetch(`http://localhost:8000/userdetails`,{
+        const response = await fetch(`/userdetails`,{
             headers:{
                 "Content-type": "aplication/json",
                 "x-access-token": localStorage.getItem("token")

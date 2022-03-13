@@ -23,7 +23,7 @@ export default function BatchManager() {
   const [Error, setError] = useState();
 
   async function handleUpdate(id) {
-    fetch(`http://localhost:8000/batchmanager/${id}`, {
+    fetch(`/batchmanager/${id}`, {
       method: "PUT",
       headers: {
         "x-access-token": localStorage.getItem("token"),
@@ -44,7 +44,7 @@ export default function BatchManager() {
     setIsLoading(true);
     setError();
     try {
-      const response = await fetch(`http://localhost:8000/batchmanager`, {
+      const response = await fetch(`/batchmanager`, {
         headers: {
           "x-access-token": localStorage.getItem("token"),
         },
@@ -125,7 +125,7 @@ function CustomModal({ showPopup = false, id, setShowPopup, setRefetch }) {
   const handleDelete = useCallback(async function handleDelete(id) {
     // eslint-disable-next-line no-restricted-globals
     if (confirm("Do you want to delete permanently?") === true) {
-      fetch(`http://localhost:8000/batchmanager/${id}`, {
+      fetch(`/batchmanager/${id}`, {
         method: "DELETE",
         headers: {
           "x-access-token": localStorage.getItem("token"),
@@ -149,7 +149,7 @@ function CustomModal({ showPopup = false, id, setShowPopup, setRefetch }) {
   useEffect(() => {
     setLoading(true);
     console.log(id);
-    fetch(`http://localhost:8000/batchmanager/${id}`, {
+    fetch(`/batchmanager/${id}`, {
       headers: {
         "x-access-token": localStorage.getItem("token"),
       },
@@ -167,7 +167,7 @@ function CustomModal({ showPopup = false, id, setShowPopup, setRefetch }) {
   }, [id, Refetch2]);
   async function fetchAPI() {
     setLoading(true);
-    const response = await fetch(`http://localhost:8000/api/batchcourse`);
+    const response = await fetch(`/api/batchcourse`);
     const body = await response.json();
     setBatchCourse(body);
     setLoading(false);
@@ -177,7 +177,7 @@ function CustomModal({ showPopup = false, id, setShowPopup, setRefetch }) {
     console.log("data", event.target);
     const formData = new FormData(event.target);
     console.log("formData", formData);
-    fetch(`http://localhost:8000/batchmanager/${id}`, {
+    fetch(`/batchmanager/${id}`, {
       method: "PUT",
       body: formData,
       headers: {
@@ -203,7 +203,7 @@ function CustomModal({ showPopup = false, id, setShowPopup, setRefetch }) {
             <div>
               <div>
                 <img
-                  src={`http://localhost:8000/images/${User.image}`}
+                  src={`/images/${User.image}`}
                   alt="profilepic"
                   style={{
                     height: "175px",

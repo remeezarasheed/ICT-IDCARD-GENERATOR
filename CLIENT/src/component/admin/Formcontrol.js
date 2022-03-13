@@ -14,13 +14,13 @@ function Formcontrol(props) {
         fetchbatchc();
         },[batchCourse]);
     async function fetchbatchc() {
-            const response = await fetch(`http://localhost:8000/api/batchcourse`);
+            const response = await fetch(`/api/batchcourse`);
             const body = await response.json();
             setBatchCourse(body);
         }
 
     async function fetchData() {
-        const response = await fetch(`http://localhost:8000/admindetails`,{
+        const response = await fetch(`/admindetails`,{
             headers:{
                 "x-access-token": localStorage.getItem("token")
                 }
@@ -38,7 +38,7 @@ function Formcontrol(props) {
            course: form[0].value,
         }
         console.log(course)
-        const res = await fetch(`http://localhost:8000/api/delcourse`, {
+        const res = await fetch(`/api/delcourse`, {
             method: "POST", 
             headers:{
                 "Content-type": "application/json",
@@ -60,7 +60,7 @@ function Formcontrol(props) {
            batch: form[0].value,
         }
         console.log(batch)
-        const res = await fetch(`http://localhost:8000/api/delbatch`, {
+        const res = await fetch(`/api/delbatch`, {
             method: "POST", 
             headers:{
                 "Content-type": "application/json",
@@ -82,7 +82,7 @@ function Formcontrol(props) {
            course: form[0].value,
         }
         console.log(course)
-        const res = await fetch(`http://localhost:8000/api/addcourse`, {
+        const res = await fetch(`/api/addcourse`, {
             method: "PUT", 
             headers:{
                 "Content-type": "application/json",
@@ -103,7 +103,7 @@ function Formcontrol(props) {
         const batch = {
            batch: form[0].value,
         }
-        const res = await fetch(`http://localhost:8000/api/addbatch`, {
+        const res = await fetch(`/api/addbatch`, {
             method: "PUT", 
             headers:{
                 "Content-type": "application/json",

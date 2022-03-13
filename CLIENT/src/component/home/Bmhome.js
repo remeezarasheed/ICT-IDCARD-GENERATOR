@@ -13,7 +13,7 @@ function Bmhome(props) {
   },);
 
   async function fetchData() {
-    const response = await fetch(`http://localhost:8000/bmdetails`, {
+    const response = await fetch(`/bmdetails`, {
       headers: {
         "x-access-token": localStorage.getItem("token"),
       },
@@ -34,7 +34,7 @@ function Bmhome(props) {
               <h3>BM Profile</h3>
               <br />
               <img
-                src={`http://localhost:8000/images/${userDetails.image}`}
+                src={`/images/${userDetails.image}`}
                 alt="profilepic"
                 style={{
                   height: "175px",

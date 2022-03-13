@@ -16,7 +16,7 @@ function BmNav(props) {
         },[]);
 
     async function fetchData() {
-        const response = await fetch(`http://localhost:8000/bmdetails`,{
+        const response = await fetch(`/bmdetails`,{
             headers:{
                 "Content-type": "aplication/json",
                 "x-access-token": localStorage.getItem("token")
@@ -42,7 +42,7 @@ function BmNav(props) {
                  <FaSignOutAlt  style={{fontSize:"25px", color:"gray", float:"right", cursor:"pointer"}} alt="Sign Out" onClick={logout}/>
                  <br/>
                  <Button variant="contained"><Link to={`/bmhome`} style={{textDecoration:"none", color:"white" }}>Home</Link></Button> 
-                 <Button variant="contained"><Link to={`/showmypendingilst`}  style={{textDecoration:"none", color:"white" }}>Pending List</Link></Button>  
+                 <Button variant="contained"><Link to={`/${userDetails.id}/showmypendingilst`}  style={{textDecoration:"none", color:"white" }}>Pending List</Link></Button>  
                   <Button variant="contained"><Link to={`/${userDetails.id}/history`}  style={{textDecoration:"none", color:"white" }}>History </Link></Button> 
                     </>
 

@@ -14,7 +14,7 @@ function Regstudent () {
             const formData = new FormData(e.target);
 
         try {
-            const res = await fetch("http://localhost:8000/api/studentregister", {
+            const res = await fetch("/api/studentregister", {
                 method: "POST",
                 body: formData
             })
@@ -27,7 +27,7 @@ function Regstudent () {
 
     useLayoutEffect(() => {
         <Coursedropdown />
-        fetch("http://localhost:8000/isUserAuth", {
+        fetch("/isUserAuth", {
             headers: {
                 "x-access-token": localStorage.getItem("token"),
             }

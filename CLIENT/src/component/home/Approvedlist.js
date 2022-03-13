@@ -15,7 +15,7 @@ const [list,setList] = useState([]);
     });
 
     async function fetchAPI() {
-        const response = await fetch(`http://localhost:8000/${id}/showmyapprove`,{
+        const response = await fetch(`/${id}/showmyapprove`,{
             headers:{
                 "x-access-token": localStorage.getItem("token")
                 }

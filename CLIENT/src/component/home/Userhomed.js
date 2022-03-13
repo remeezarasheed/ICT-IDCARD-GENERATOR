@@ -10,7 +10,7 @@ function Userhomed(props) {
   });
 
   async function fetchData() {
-    const response = await fetch(`http://localhost:8000/userdetails`, {
+    const response = await fetch(`/userdetails`, {
       headers: {
         "x-access-token": localStorage.getItem("token"),
       },
@@ -34,7 +34,7 @@ function Userhomed(props) {
               <div className="profileheaderr">
                 <div className="a">
                   <img
-                    src={`http://localhost:8000/images/${userDetails.image}`}
+                    src={`/images/${userDetails.image}`}
                     alt="prof"
                   />
                 </div>

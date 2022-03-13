@@ -11,7 +11,7 @@ function Userhome(props) {
             });
     
         async function fetchData() {
-            const response = await fetch(`http://localhost:8000/userdetails`,{
+            const response = await fetch(`/userdetails`,{
                 headers:{
                     "x-access-token": localStorage.getItem("token")
                     }
@@ -32,7 +32,7 @@ function Userhome(props) {
                
                  <h3>Student Profile</h3>
                  <br/>
-                 <img src={`http://localhost:8000/images/${userDetails.image}`} alt="profilepic" style={{height:"175px", borderRadius:"10px", border:"2px solid violet"}} />
+                 <img src={`/images/${userDetails.image}`} alt="profilepic" style={{height:"175px", borderRadius:"10px", border:"2px solid violet"}} />
                 <h3 className='h3detil' style={{height:"0.5px"}}>{userDetails.name}</h3>
                 <br />
                 <p className='userdetil'>Student</p> 

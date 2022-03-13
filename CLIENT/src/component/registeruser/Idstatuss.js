@@ -13,7 +13,7 @@ function Idstatuss(props) {
 
 
     async function fetchData() {
-        const response = await fetch(`http://localhost:8000/api/${id}/getroleandstatus`,{
+        const response = await fetch(`/api/${id}/getroleandstatus`,{
             headers:{
                 "x-access-token": localStorage.getItem("token")
                 }
@@ -26,7 +26,7 @@ function Idstatuss(props) {
 
     
     function downloadpdf() {
-        fetch(`http://localhost:8000/api/${id}/generate-pdf`,{
+        fetch(`/api/${id}/generate-pdf`,{
             headers:{
                 "x-access-token": localStorage.getItem("token")
                 }
@@ -54,7 +54,7 @@ function Idstatuss(props) {
                 <table className='table1' key={key}>
                     <tbody>
                     <tr className='tr1'>
-                   <td style={{padding:"15px"}}><img className='round' src={`http://localhost:8000/images/${i.regimage}`} alt="profpic" height="150px"/></td>
+                   <td style={{padding:"15px"}}><img className='round' src={`/images/${i.regimage}`} alt="profpic" height="150px"/></td>
                     </tr>  <tr> <td style={{padding:"5px"}}><span className="idststat">{i.email}</span>
                                                     <br /> <span className='small'>Created at: {i.updatedAt.substring(0,10)}</span></td>
                     </tr>  <tr>  <td style={{padding:"5px"}} className="idststat">{i.fullname}</td>  </tr>

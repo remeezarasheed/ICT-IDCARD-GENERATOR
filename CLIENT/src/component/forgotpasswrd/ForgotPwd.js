@@ -21,7 +21,7 @@ function ForgotPwd(props) {
             name: form[1].value
         }
         try {
-            const res = await fetch("http://localhost:8000/api/forgetpwd", {
+            const res = await fetch("/api/forgetpwd", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json"

@@ -44,7 +44,7 @@ function App() {
         <Route path="/batchmanagers" element={<BatchManager />} />
         <Route path="/newbatchmanagers" element={<NewBatchManager />} />
         <Route path="/forgotPassword" element={<ForgotPwd />} />
-        <Route path="/showmypendingilst" element={<PendingList />} />
+        <Route path="/:id/showmypendingilst" element={<PendingList />} />
         <Route path="/:id/history" element={<Approvedlist />} />
         
         
