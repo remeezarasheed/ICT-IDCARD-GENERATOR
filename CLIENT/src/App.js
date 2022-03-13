@@ -16,6 +16,7 @@ import BatchManager from './component/batchmanager/BatchManager.jsx';
 import NewBatchManager from './component/newbatchmanager/NewBatchManager.jsx';
 import ForgotPwd from './component/forgotpasswrd/ForgotPwd';
 import PendingList from './component/home/PendingList';
+import Approvedlist from './component/home/Approvedlist';
 //  import 'bootstrap/dist/css/bootstrap.css';
 
 
@@ -44,6 +45,8 @@ function App() {
         <Route path="/newbatchmanagers" element={<NewBatchManager />} />
         <Route path="/forgotPassword" element={<ForgotPwd />} />
         <Route path="/showmypendingilst" element={<PendingList />} />
+        <Route path="/:id/history" element={<Approvedlist />} />
+        
         
 
 

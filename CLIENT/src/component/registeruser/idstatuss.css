@@ -3,7 +3,7 @@
   padding: 30px;
   padding-bottom: 170px;
   margin: 0px;
-  height: 100%;
+  min-height: 100vh;
   background-color: #330033;
   background-color: #330033;
   background-color: #000000;

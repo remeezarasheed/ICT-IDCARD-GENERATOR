@@ -96,11 +96,12 @@ router.get("/", (req, res) => {
 
 //details of BM end here
 
-router.get("/:id/bmuser", (req, res) => {
+router.get("/:id", (req, res) => {
   const role = req.user.role;
   const id = req.params.id;
-  Users.find({ _id: id })
-  .then((r) => res.json(r));
+  Users.findById(id)
+    .then((r) => res.json(r))
+    .catch((error) => res.status(500).json({ message: error.message }));
 });
 // adding new BM and mail sending
 router.post("/", upload.single("image"), async (req, res) => {
@@ -204,39 +205,32 @@ router.delete("/:id", (req, res) => {
 
 //updating details of BM
 
-router.put("/:id", upload.single("image"), (req, res) => {
+router.put("/:id", upload.single("image"), async (req, res) => {
   //destructuring data from request and body
   console.log("12345");
+  console.log("req.body", req.body);
   const role = req.user.role;
   if (role === "admin") {
     const id = req.params.id;
+    const getCurrent = await Users.findById(id);
+    console.log(getCurrent);
     const filter = { _id: id };
-    const {
-      email,
-      name,
-      designation,
-      gender,
-      password,
-      role,
-      batch,
-      course,
-      phone,
-    } = req.body;
+    const { email, name, designation, gender, role, batch, course, phone } =
+      req.body;
     const update = {
-      email,
-      name,
-      designation,
-      gender,
-      password,
-      role,
-      batch,
-      course,
-      phone,
+      email: getCurrent.email,
+      name: name && name !== "" ? name : getCurrent.name,
+      designation:designation&& designation!==""? designation : getCurrent.designation,
+      gender: gender&& gender!==""? gender : getCurrent.gender,
+      password: getCurrent.password,
+      role:role&& role!==""? role : getCurrent.role,
+      batch: batch&& batch!==""? batch : getCurrent.batch,
+      course: course&& course!==""? course : getCurrent.course,
+      phone: phone&& phone!==""? phone: getCurrent.phone,
     };
     console.log(update);
-    Users.updateOne(filter, update, { new: true }).then((batch) => {
-      res.json(batch);
-    });
+    const batchUpdate = await Users.updateOne(filter, update, { new: true });
+    res.status(200).json(batchUpdate);
   } else {
     res.json((message = "Not an Admin"));
   }

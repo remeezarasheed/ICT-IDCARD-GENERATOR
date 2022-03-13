@@ -3,16 +3,10 @@ import "./BatchManager.css";
 
 import "reactjs-popup/dist/index.css";
 // import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  DialogContentText,
-  Button,
-} from "@mui/material";
+import { Dialog, DialogActions,DialogContent,DialogTitle,DialogContentText,Button } from "@mui/material";
 import Header from "../header/Header.jsx";
 import "../header/Header.css";
+
 
 export default function BatchManager() {
   const [isLoading, setIsLoading] = useState(true);
@@ -21,6 +15,7 @@ export default function BatchManager() {
   const [showPopup, setShowPopup] = useState(false);
   const [selectedUser, setSelectedUser] = useState([]);
   const [Error, setError] = useState();
+  const [EditMode, setEditMode] = useState(false);
 
   async function handleUpdate(id) {
     fetch(`http://localhost:8000/batchmanager/${id}`, {
@@ -66,7 +61,7 @@ export default function BatchManager() {
       <div className="batchManager">
         <CustomModal
           showPopup={showPopup}
-          id={selectedUser.id}
+          User={selectedUser}
           setShowPopup={setShowPopup}
           setRefetch={setRefetch}
         />
@@ -116,11 +111,14 @@ export default function BatchManager() {
   );
 }
 
-function CustomModal({ showPopup = false, id, setShowPopup, setRefetch }) {
+function CustomModal({
+  showPopup = false,
+  User = {},
+  setShowPopup,
+  setRefetch,
+}) {
   const [EditMode, setEditMode] = useState(false);
   const [Loading, setLoading] = useState(true);
-  const [User, setUser] = useState({});
-  const [Refetch2, setRefetch2] = useState(0);
   const [batchCourse, setBatchCourse] = useState([]);
   const handleDelete = useCallback(async function handleDelete(id) {
     // eslint-disable-next-line no-restricted-globals
@@ -137,7 +135,6 @@ function CustomModal({ showPopup = false, id, setShowPopup, setRefetch }) {
         })
         .then((data) => {
           setRefetch((v) => v + 1);
-          setRefetch2((v) => v + 1);
           setShowPopup((previous) => !previous);
         })
         .catch((e) => console.log(e.message));
@@ -146,25 +143,6 @@ function CustomModal({ showPopup = false, id, setShowPopup, setRefetch }) {
   useEffect(() => {
     fetchAPI();
   }, []);
-  useEffect(() => {
-    setLoading(true);
-    console.log(id);
-    fetch(`http://localhost:8000/batchmanager/${id}`, {
-      headers: {
-        "x-access-token": localStorage.getItem("token"),
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setUser(data);
-        console.log(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error(error);
-        setLoading(false);
-      });
-  }, [id, Refetch2]);
   async function fetchAPI() {
     setLoading(true);
     const response = await fetch(`http://localhost:8000/api/batchcourse`);
@@ -176,29 +154,29 @@ function CustomModal({ showPopup = false, id, setShowPopup, setRefetch }) {
     event.preventDefault();
     console.log("data", event.target);
     const formData = new FormData(event.target);
-    console.log("formData", formData);
-    fetch(`http://localhost:8000/batchmanager/${id}`, {
+    console.log("formData", formData)
+    fetch(`http://localhost:8000/batchmanager/${User.id}`, {
       method: "PUT",
       body: formData,
       headers: {
+        "Content-type": "application/json",
         "x-access-token": localStorage.getItem("token"),
       },
     })
       .then(function (response) {
+        // eslint-disable-next-line no-undef
         alert("You updated successfully");
         setRefetch((v) => v + 1);
-        setUser({});
       })
       .catch((err) => console.log(err));
     // const data = await res.json();
     // console.log(data);
     // setErrorMessage(data.message);
   };
-
   return (
     <Dialog open={showPopup}>
-      <form onSubmit={handleSubmit}>
         <DialogContent>
+      <form onSubmit={handleSubmit}>
           {User ? (
             <div>
               <div>
@@ -228,45 +206,33 @@ function CustomModal({ showPopup = false, id, setShowPopup, setRefetch }) {
               <p className="batchmanagerdetil">
                 Designation: {!EditMode && User.designation}
                 {EditMode && (
-                  <select
-                    placeholder={User.designation}
-                    name="designation"
-                    required
-                  >
-                    <option value="Assistant">Assistant</option>
-                    <option value="Associate">Associate</option>
-                    <option value="Mentor">Mentor</option>
-                    <option value="cashier">cashier</option>
-                  </select>
+                  <select  placeholder={User.designation} name='designation' required>
+                  
+                  <option value='Assistant'>Assistant</option>
+                  <option value='Associate'>Associate</option>
+                  <option value='Mentor'>Mentor</option>
+                  <option value='cashier'>cashier</option>
+                </select>
                 )}
               </p>
               <p className="batchmanagerdetil">
                 Gender:{!EditMode && User.gender}
                 {EditMode && (
-                  <select
-                    placeholder={User.gender}
-                    name="gender"
-                    id="gender"
-                    required
-                  >
-                    <option>Female</option>
-                    <option>Male</option>
-                    <option>Transgender Woman</option>
-                    <option>Transgender Man</option>
-                    <option>Non Binary</option>
-                  </select>
+                 <select placeholder={User.gender} name='gender' id='gender' required>
+                 
+                 <option>Female</option>
+                 <option>Male</option>
+                 <option>Transgender Woman</option>
+                 <option>Transgender Man</option>
+                 <option>Non Binary</option>
+               </select>
                 )}
               </p>
               <p className="batchmanagerdetil">Email :{User.email}</p>
               <p className="batchmanagerdetil">
                 Phone : {!EditMode && User.phone}
                 {EditMode && (
-                  <input
-                    name="phone"
-                    placeholder={User.phone}
-                    className="edit-inputfield"
-                    type="text"
-                  />
+                  <input name="phone" placeholder={User.phone} className="edit-inputfield" type="text" />
                 )}
               </p>
               <p className="batchmanagerdetil">
@@ -276,7 +242,7 @@ function CustomModal({ showPopup = false, id, setShowPopup, setRefetch }) {
                   <select className="batchmanagerdetil" name="batch">
                     {batchCourse.map((i, key) =>
                       i.batch.map((j, key) => (
-                        <option key={key} value={j} selected={User.batch === j}>
+                        <option key={key} value={j}>
                           {j}
                         </option>
                       ))
@@ -298,8 +264,7 @@ function CustomModal({ showPopup = false, id, setShowPopup, setRefetch }) {
                     )}
                   </select>
                 )}
-              </p>
-              <br />
+              </p><br />
               {EditMode && (
                 <p>
                   Image: <input type="file" name="image" id="image" />
@@ -307,16 +272,17 @@ function CustomModal({ showPopup = false, id, setShowPopup, setRefetch }) {
               )}
             </div>
           ) : null}
+      
         </DialogContent>
         <DialogActions>
           {EditMode && <Button type="submit">Update</Button>}
           <Button onClick={() => setEditMode((o) => !o)}>
             {!EditMode ? <>Edit</> : <>Cancel Edit</>}
           </Button>
-          <Button onClick={() => handleDelete(id)}>Delete</Button>
+          <Button onClick={() => handleDelete(User.id)}>Delete</Button>
           <Button onClick={() => setShowPopup((o) => !o)}>Cancel</Button>
         </DialogActions>
-      </form>
+        </form>
     </Dialog>
   );
 }

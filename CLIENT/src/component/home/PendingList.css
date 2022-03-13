@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+  }
+.pendingbody{
+
+    width: 100vw;
+    height: 100vh;
+    background: -webkit-linear-gradient(
+    to right,
+    #e29b18,
+    #2b5876
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #628eee,
+    #abbbbe
+  )!important;
+}
+.pendingtable{
+    padding: 50px;
+}

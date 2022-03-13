@@ -1,16 +1,19 @@
 import React from "react";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Header.css";
+import { Button } from "@mui/material";
 
 export default function Header() {
   const navigate = useNavigate();
-  async function logout() {     
+  function logout() {
     // eslint-disable-next-line no-restricted-globals
-    if(confirm("Do you want to logout?")=== true){
-    localStorage.removeItem("token")
-    await navigate("/")
+    if (confirm("Do you want to logout?") === true) {
+      navigate("/");
+      localStorage.removeItem("token");
+       
     }
-}
+   
+  }
   return (
     <div>
       <div className="head">
@@ -27,9 +30,9 @@ export default function Header() {
           <Link className="link" to="/formcontrol">
             Form Controls
           </Link>
-          <Link className="link" to="/" onClick={logout}>
+          <Button className="link"  onClick={logout}>
             Signout
-          </Link>
+          </Button>
         </div>
         <div className="topRight">
           <img
