@@ -34,13 +34,7 @@ export default function Header() {
             Signout
           </Button>
         </div>
-        <div className="topRight">
-          <img
-            className="topImg"
-            src="https://www.whatsappimages.in/wp-content/uploads/2020/12/Cute-Girl-Images-For-Whatsapp-Dp-Free-Download-2.jpg"
-            alt="profilepic"
-          />
-        </div>
+       
       </div>
     </div>
   );

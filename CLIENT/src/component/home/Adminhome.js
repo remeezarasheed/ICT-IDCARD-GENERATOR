@@ -28,7 +28,7 @@ function Adminhome(props) {
      
         <div
           className="body2"
-          style={{
+          style={{minHeight:"100vh",minWidth:"100vw",
             backgroundImage: `url(${process.env.PUBLIC_URL}/assests/adminhome.png)`,
           }}
         >

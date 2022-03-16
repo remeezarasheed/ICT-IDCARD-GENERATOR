@@ -40,7 +40,7 @@ function ForgotPwd(props) {
 
     return (
         <>
-        <div className="login-main">
+        <div className="login-main" style={{minWidth:"100vh", backgroundImage: "linear-gradient(to top, #d16323 0%, #e9d62d 100%)"}}>
         <div className="login-mai">
                 <div className="loginlabel">ICTAK ID Generator</div>
                 <br></br>

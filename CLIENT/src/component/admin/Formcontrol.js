@@ -121,7 +121,7 @@ function Formcontrol(props) {
     return (
        
         <>
-         <Header />,
+         <Header />
         
          {
           //checking user level (front end)

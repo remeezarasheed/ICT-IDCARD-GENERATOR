@@ -36,7 +36,7 @@ const [list,setList] = useState([]);
                     sheet="tablexls"
                     buttonText="Export to excel"/>
 </div>
-<div style={{padding:"50px"}} className="table-wrapper32">
+<div  className="table-wrapper32">
                    <table class="fl-table32" id="table-to-xls" >
                 <thead>
                 <tr>

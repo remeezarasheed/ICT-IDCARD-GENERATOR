@@ -1,13 +1,14 @@
-* {
+/* * {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-}
+} */
 .body12 {
   font-family: Helvetica;
   -webkit-font-smoothing: antialiased;
-  background: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%);
+  background: linear-gradient(135deg, #8bc6ec 0%, #9599e2);
   min-height: 100vh;
+  min-width: 100VW;
 }
 
 /* Table Styles */

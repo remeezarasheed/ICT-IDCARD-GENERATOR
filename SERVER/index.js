@@ -208,7 +208,7 @@ app.post("/api/login", (req, res) => {
                       }
                   )
               } else {
-                  return res.json({message: "Invalid Username or Password"})
+                  return res.json({message: "Invalid Email or Password"})
               }
           })
 

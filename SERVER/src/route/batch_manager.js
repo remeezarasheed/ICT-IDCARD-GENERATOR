@@ -227,6 +227,7 @@ router.put("/:id", upload.single("image"), async (req, res) => {
       batch: batch&& batch!==""? batch : getCurrent.batch,
       course: course&& course!==""? course : getCurrent.course,
       phone: phone&& phone!==""? phone: getCurrent.phone,
+    
     };
     console.log(update);
     const batchUpdate = await Users.updateOne(filter, update, { new: true });

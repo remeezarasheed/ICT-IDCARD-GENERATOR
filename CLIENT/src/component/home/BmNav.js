@@ -35,7 +35,7 @@ function BmNav(props) {
     }
 
     return (
-        <div className='nav1'>
+        <div className='nav12'>
             {
                 
                 <>

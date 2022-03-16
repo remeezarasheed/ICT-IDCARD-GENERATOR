@@ -50,10 +50,8 @@ export default function PendingList() {
   return (
       <>
       <div className="pendingbody">
-
       <BmNav />
-    <div style={{padding:"50px"}} className="table-wrapper32">
-       
+    <div  className="table-wrapper32">
      <table className="fl-table32">
           <thead>
             <tr>
@@ -63,8 +61,8 @@ export default function PendingList() {
               <th>EMAIL</th>
               <th>COURSE</th>
               <th>BATCH</th>
-              <th style={{ width: '14%'}}>START DATE</th>
-              <th style={{ width: '14%'}}>END DATE</th>
+              <th >START DATE</th>
+              <th >END DATE</th>
               <th>ACTIONS</th>
             </tr>
           </thead>
@@ -92,7 +90,7 @@ export default function PendingList() {
                   <td>{v.coursesd}</td>
                   <td>{v.coursesend}</td>
                   <td>
-                    <Button color="success" onClick={() => approveUser(v._id)}>Approve</Button>
+                    <Button color="success" onClick={() => approveUser(v._id)}>Approve</Button><br />
                     <Button color="error" onClick={() => rejectedUser(v._id)}>Reject</Button>
                   </td>
                 </tr>
@@ -100,8 +98,6 @@ export default function PendingList() {
           </tbody>
         </table>
     </div>
-
-
       </div>
     
     </>

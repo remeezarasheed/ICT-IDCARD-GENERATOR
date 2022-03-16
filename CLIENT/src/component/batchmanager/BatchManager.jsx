@@ -300,11 +300,6 @@ function CustomModal({ showPopup = false, id, setShowPopup, setRefetch }) {
                 )}
               </p>
               <br />
-              {EditMode && (
-                <p>
-                  Image: <input type="file" name="image" id="image" />
-                </p>
-              )}
             </div>
           ) : null}
         </DialogContent>

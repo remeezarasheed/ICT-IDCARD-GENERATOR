@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300&display=swap");
 
 .login-main {
   background-image: linear-gradient(to top, #d16323 0%, #e9d62d 100%);
@@ -37,13 +37,13 @@
 
 ::-webkit-input-placeholder {
   /* Edge */
-  color: white;
+  /* color: white;
   font-size: 20px;
 }
 
 :-ms-input-placeholder {
   /* Internet Explorer 10-11 */
-  color: white;
+  /* color: white;
   font-size: 20px;
 }
 ::placeholder {
@@ -59,8 +59,8 @@
   margin-top: 20px;
   cursor: pointer;
   background-color: transparent;
-  color: black;
-}
+  color: black; */
+/* }
 
 .buttonlog:hover {
   background-color: #09203f;
@@ -94,6 +94,6 @@
 .login-mai {
   border: 2px dashed #09203f;
   padding: 30px;
-  border-radius: 10px;
-  background-color: white;
-}
+  /* border-radius: 10px; */
+  /* background-color: white;
+}   */
